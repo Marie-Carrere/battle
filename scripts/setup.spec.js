@@ -2,6 +2,8 @@
 /**
  * create the gameboard
  */
+
+
 function createGameBoard(rows, cols) {
 
     var arr = [];
@@ -104,35 +106,22 @@ function sunk(board, row, col) {
  * randomBoat
  */
 
-var boardSize = 10;
-var horizontal = true;
+ let boardSize = 10;
+ let min = 0;
 
-function randomShip(board, horizontal, randomGenerator, shipLength) {
+ function randomShip(board, randomGenerator, shipLength, horizontal = true) {
+   
+  // Generate randomly a X related to the board length
+  let x = (Math.floor(randomGenerator() * boardSize) + min);
+  let y = 0;
 
-  var x = Math.floor(randomGenerator() * boardSize - shipLength);
-  var y = Math.floor(randomGenerator() * boardSize); 
- 
-  var startShip = (y + shipLength);
-  var cells = startShip - boardSize;
-
- 
-  for (var i = 0; i < shipLength; i++) {
-  
-      if (horizontal && startShip >= boardSize) {
-          board[x][(y - cells) + i] = shipLength;
-      } else if (!horizontal && startShip >= boardSize) {
-          board[(x - cells) + i][y] = shipLength;
-      } 
-      
-      if (startShip <= boardSize && horizontal) {
-          board[x][(y + cells) + i] = shipLength;
-      } else if (!horizontal && startShip <= boardSize) {
-          board[(x + cells) + i][y] = shipLength;
-      }
+  // Loop over the ship's length to place the random coordinates
+  for (let i = 0; i < shipLength; i++) {
+    board[x][y + i] = shipLength;
   }
 
-    return board 
-}
+  return board
+ }
 
 
 
@@ -254,73 +243,36 @@ describe('sunk', () => {
 })  
 
 describe('randomShip', () => {
-    let board;
-    beforeEach(() => {
-        board = [
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0]
-        ];
-    });
+  let board;
+  beforeEach(() => {
+    board = [
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0]
+    ];
+  });
 
-
-    it("should generate random coord for a patrol boat of length 2 placed horizontally", function() {
-      expect(randomShip(board, horizontal, () => 0.5, 2)).toEqual(
-            [
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,2,2,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0]
-            ]
-      );
-    });
-
-    it("should generate random coord for a carrier of length 5 placed horizontally", function() {
-        expect(randomShip(board, horizontal,() => 0.5, 5)).toEqual(
-            [
-                [0,0,0,0,0,5,5,5,5,5],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0]
-            ]
-        );
-      });
-
-      it("should generate random coord for a ship of length 5 placed vertically", function() {
-        expect(randomShip(board, false,() => 0.5, 5)).toEqual(
-            
-            [
-                [0,0,0,0,0,5,0,0,0,0],
-                [0,0,0,0,0,5,0,0,0,0],
-                [0,0,0,0,0,5,0,0,0,0],
-                [0,0,0,0,0,5,0,0,0,0],
-                [0,0,0,0,0,5,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0]
-            ]
-        );
-      });
+  it('should return random coordinates related to the length\'s boat', function() {
+    expect(randomShip(board, () => 0.2, 2)).toEqual(
+      [
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [2,2,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0]
+      ]
+    )
+  })
 })
-

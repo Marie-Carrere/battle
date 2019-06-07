@@ -1,15 +1,27 @@
-export function randomShip(board, randomXGenerator, randomYGenerator, shipLength, horizontal = true) {
-    let boardSize = 10;
-    // Generate randomly a X related to the board length
-    let x = (Math.floor(randomXGenerator() * boardSize));
-    let y = (Math.floor(randomYGenerator() * boardSize));
+// Given a board of 5x5
+// when i fired the function
+// Then my board contains a 2b1 1b3 1b4
 
-    // Loop over the ship's length to place the random coordinates
-    for (let i = 0; i < shipLength; i++) {
-        board[x][y + i] = shipLength;
+
+/**
+ * @param Array board
+ * @param function random
+ * @returns Array resultat
+ */
+export function generateRandomShip(board, random) {
+    const boatsToGenerate = [1, 1, 3, 4];
+
+    const resultat = board;
+    for(let boatIndex in boatsToGenerate) {
+        const boatSize = boatsToGenerate[boatIndex];
+
+        const deltaMax = board[0].length - boatSize;
+        const deltaX = Math.floor(random() * deltaMax);
+        
+        for( let i = deltaX; i < boatSize + deltaX; i++) {
+            board[boatIndex][i] = boatSize;
+        }
+
     }
-
-    console.log(board);
-    return board
-    
+    return resultat
 }

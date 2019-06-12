@@ -1,5 +1,5 @@
-import { createGameBoard } from './createGameBoard'
-import { initGameBoard } from './initGameBoard'
+import { createGameBoard } from './createGameBoard.js'
+import { initGameBoard } from './initGameBoard.js'
 
 let gameboard = createGameBoard(5, 5);
 

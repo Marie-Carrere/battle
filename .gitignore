@@ -1,0 +1,23 @@
+# dependencies
+node_modules
+
+# logs
+npm-debug.log
+
+# Nuxt build
+.nuxt
+
+# Nuxt generate
+dist
+
+# DS_Store file
+.DS_Store
+
+# Coverage
+coverage
+
+# Json extract
+static/json
+
+# logInfo
+logInfo.log

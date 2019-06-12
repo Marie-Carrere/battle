@@ -12,16 +12,17 @@ export function generateRandomShip(board, random) {
     const boatsToGenerate = [1, 1, 3, 4];
 
     const resultat = board;
-    for(let boatIndex in boatsToGenerate) {
+    for (let boatIndex in boatsToGenerate) {
         const boatSize = boatsToGenerate[boatIndex];
 
         const deltaMax = board[0].length - boatSize;
         const deltaX = Math.floor(random() * deltaMax);
-        
-        for( let i = deltaX; i < boatSize + deltaX; i++) {
+
+        for (let i = deltaX; i < boatSize + deltaX; i++) {
             board[boatIndex][i] = boatSize;
         }
 
     }
+
     return resultat
 }

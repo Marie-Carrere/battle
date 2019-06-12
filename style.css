@@ -44,3 +44,11 @@ td {
     width: 100px;
     height: 100px;
 }
+
+.hit {
+    background: url(./assets/img/ship.png) no-repeat center center;
+}
+
+.miss {
+    background: url(./assets/img/miss.png) no-repeat center center;
+}

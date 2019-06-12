@@ -1,4 +1,4 @@
-import { sunk } from './sunk'
+import { sunk } from '../scripts/sunk'
 
 describe('sunk', () => {
     let board;

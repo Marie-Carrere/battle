@@ -1,4 +1,4 @@
-import { createGameBoard } from './createGameBoard'
+import { createGameBoard } from '../scripts/createGameBoard'
 
 describe('create gameboard', () => {
   it('should generate 4*4 gameboard', () => {

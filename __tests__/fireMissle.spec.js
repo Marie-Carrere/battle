@@ -1,4 +1,4 @@
-import { fireMissle } from './fireMissle'
+import { fireMissle } from '../scripts/fireMissle'
 
 describe('fireMissle', () => {
     let board;

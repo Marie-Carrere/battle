@@ -1,7 +1,7 @@
 export function initGameBoard(gameboard) {
     let table = document.getElementById('gameboard');
 
-    // console.log(table)
+    console.log(table)
 
     for(let indexR = 0; indexR < gameboard.length; indexR++) {
         let row = gameboard[indexR];

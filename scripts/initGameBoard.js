@@ -15,7 +15,11 @@ const setupEventListener = (DOMGameboard, gameboard) => {
 
                 // Boat has been hit, change the UI
                 if (isHit) {
-                    cell.style.backgroundColor = "red"
+                    cell.innerHTML = "💥"
+                }
+
+                if (!isHit) {
+                    cell.innerHTML = "🌊"
                 }
             })
         })

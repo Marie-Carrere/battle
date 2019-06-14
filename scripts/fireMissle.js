@@ -4,7 +4,6 @@
  * Otherwise return false
  */
 export function fireMissle(board, row, col) {
-  console.log("Firing missle");
   if (isNaN(row) || isNaN(col)) {
     throw new Error('error message');
   }

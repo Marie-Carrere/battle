@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+body {
+    text-align: center;
+    padding: 1.8rem;
+    max-width: 62.5rem;
+    margin: 0 auto;
+    text-align: center;
+    font-family: "Press Start 2P", cursive;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    line-height: 3.4rem;
+    padding: 4rem;
+  }
+
+  /* Content */
+  .content {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+
+  /* Button */
+  .eightbit-btn {
+    background: #92CD41;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 1.2rem;
+    font-family: "Press Start 2P", cursive;
+    text-decoration: none;
+    color: white;
+    box-shadow: inset -4px -4px 0px 0px #4AA52E;
+  }
+  
+  .eightbit-btn:hover, .eightbit-btn:focus {
+    background: #76c442;
+    box-shadow: inset -6px -6px 0px 0px #4AA52E;
+  }
+
+  .eightbit-btn:active {
+    box-shadow: inset 4px 4px 0px 0px #4AA52E;
+  }
+
+  .eightbit-btn:before, .eightbit-btn:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+  }
+
+  .eightbit-btn:before {
+    top: -6px;
+    left: 0;
+    border-top: 6px black solid;
+    border-bottom: 6px black solid;
+  }
+
+  .eightbit-btn:after {
+    left: -6px;
+    top: 0;
+    border-left: 6px black solid;
+    border-right: 6px black solid;
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+  
+  /* Progression bar */
+  .bar {
+    width: 80%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: 2rem;
+  }
+
+
+
+  
+  
+  
+  

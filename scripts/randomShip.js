@@ -2,7 +2,6 @@
 // when i fired the function
 // Then my board contains a 2b1 1b3 1b4
 
-
 /**
  * @param Array board
  * @param function random
@@ -23,6 +22,6 @@ export function generateRandomShip(board, random) {
         }
 
     }
-
+    
     return resultat
 }

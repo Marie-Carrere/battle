@@ -2,31 +2,6 @@ import { fireMissle } from "./fireMissle.js"
 import { generateRandomShip } from "./randomShip.js"
 
 /**
- * Sets up our click event listeners
- * On click, call fireMissile
- * @param {*} DOMGameboard 
- * @param {*} gameboard 
- */
-const setupEventListener = (DOMGameboard, gameboard) => {
-    DOMGameboard.forEach((row, rowIndex) => {
-        row.forEach((cell, cellIndex) => {
-            cell.addEventListener("click", () => {
-                const isHit = fireMissle(gameboard, rowIndex, cellIndex)
-
-                // Boat has been hit, change the UI
-                if (isHit) {
-                    cell.innerHTML = "💥"
-                }
-
-                if (!isHit) {
-                    cell.innerHTML = "🌊"
-                }
-            })
-        })
-    });
-}
-
-/**
  * Creates a DOM gameboard
  * Each row is a tr and each cell a td
  * @param {*} gameboard - the initial empty table
@@ -58,3 +33,44 @@ export function initGameBoard(gameboard) {
 
     setupEventListener(DOMGameboard, gameboard)
 }
+
+/**
+ * Sets up our click event listeners
+ * On click, call fireMissile
+ * @param {*} DOMGameboard 
+ * @param {*} gameboard 
+ */
+
+let counter = 0;
+
+const setupEventListener = (DOMGameboard, gameboard) => {
+    DOMGameboard.forEach((row, rowIndex) => {
+        row.forEach((cell, cellIndex) => {
+            cell.addEventListener("click", () => {
+                const isHit = fireMissle(gameboard, rowIndex, cellIndex)
+                console.log(gameboard)
+                // Boat has been hit, change the UI
+                if (!isHit) {
+                    cell.innerHTML = '🌊'
+                }
+                
+                // TODO: create modal to show the winner
+                if (isHit) {
+                    cell.innerHTML = '💥';
+                    counter++;  
+                    if (counter === 9) {
+                        alert('you won');
+                    }
+                                      
+                }
+
+                
+            })
+        })
+    });
+}
+
+
+
+
+

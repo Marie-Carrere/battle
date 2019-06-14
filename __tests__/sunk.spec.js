@@ -51,4 +51,4 @@ describe('sunk', () => {
       board[1][3] = 'hit';
       expect(sunk(board, 1, 4)).toEqual(true)
     });
-    }) 
+  }) 

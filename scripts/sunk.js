@@ -32,5 +32,7 @@ export function sunk(board, row, col) {
         } 
     }
 
+    
     return nbBoatIsHit === boatSize;
+
 }

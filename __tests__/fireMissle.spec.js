@@ -11,17 +11,17 @@ describe('fireMissle', () => {
       ];
     });
       it('it should return miss', () => {
-          expect(fireMissle(board, 0, 0)).toEqual('Miss')
+          expect(fireMissle(board, 0, 0)).toEqual(false)
       });
     
       it('it should return hit', () => {
-          expect(fireMissle(board, 0, 1)).toEqual('Hit' )
+          expect(fireMissle(board, 0, 1)).toEqual(true)
       });
     
     
       test('throws an error', () => {
           expect(() => {
-              fireMissle(board, -50, 'tata');
+              fireMissle(board, -50, 'blop');
           }).toThrowError(new Error('error message'));
       });
     })

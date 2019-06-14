@@ -1,5 +1,5 @@
 /**
- * Checks if a boat is touched
+ * Checks if a boat is hit
  * If so, return true
  * Otherwise return false
  */
@@ -14,9 +14,7 @@ export function fireMissle(board, row, col) {
   }
 
   if (board[row][col] > 0) {
-    console.log(`${row} ${col} has been hit`);
     return true;
   }
-  console.log(`${row} ${col} has NOT been hit`);
   return false;
 }

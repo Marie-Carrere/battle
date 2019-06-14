@@ -34,6 +34,7 @@ table {
     margin: auto;
 }
 
+/* TODO: fix the crosshair cursor */
 #board {
     display: inline-block;
     cursor: url(./assets/img/crosshaircursor.png), auto; 

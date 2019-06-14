@@ -35,7 +35,8 @@ table {
 }
 
 /* TODO: fix the crosshair cursor */
-#board {
+
+#gameboard {
     display: inline-block;
     cursor: url(./assets/img/crosshaircursor.png), auto; 
 }

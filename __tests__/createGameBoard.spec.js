@@ -1,5 +1,7 @@
 import { createGameBoard } from '../scripts/createGameBoard'
 
+// TODO: add code coverage
+
 describe('create gameboard', () => {
   it('should generate 4*4 gameboard', () => {
       expect(createGameBoard(4, 4)).toEqual(

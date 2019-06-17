@@ -3,9 +3,10 @@ const modal = document.getElementById('simpleModal');
 /**
  * Modal opening
  */
-const modalBtn = document.getElementById('modal-button');
-// const openModal = () => modal.style.display = 'block';
-const openModal = () => modal.style.display = 'block';
+export const openModal = () => {
+    modal.style.display = 'block';
+    console.log('modal opened');
+}
 
 
 /**
@@ -22,6 +23,3 @@ const closeOutsideModal = (event) => {
     }
 }
 window.addEventListener('click', closeOutsideModal);
-
-
-

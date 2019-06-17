@@ -1,6 +1,6 @@
 import { fireMissle } from "./fireMissle.js"
 import { generateRandomShip } from "./randomShip.js"
-import "./modal.js"
+import { openModal } from "./modal.js"
 
 /**
  * Creates a DOM gameboard
@@ -57,7 +57,6 @@ const setupEventListener = (DOMGameboard, gameboard) => {
                     cell.innerHTML = '💥';
                     counter++;  
                     if (counter === 9) {
-                        // alert('you won')
                         openModal();
                     }
                                       

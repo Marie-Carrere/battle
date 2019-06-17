@@ -4,7 +4,7 @@ body {
     text-align: center;
     padding: 1.8rem;
     font-family: sans-serif;
-    background-image: url(../assets/img/sea-background.jpg); 
+    background-image: url(../assets/img/sea-background.jpg);  
     font-family: 'Press Start 2P', cursive;
     color: rgba(254, 249, 254, 0.80)
 }
@@ -47,3 +47,47 @@ td {
     font-size: 30px;
 }
 
+/* Modal */
+.button {
+    background: coral;
+    padding: 1em 2em;
+    color: white;
+    border: 0;
+  }
+  
+.button:hover {
+    background: #333;
+  }
+  
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+  
+.modal-content {
+    background-color: grey;
+    margin: 20% auto;
+    padding: 20px;
+    width: 70%;
+}
+  
+.close-button {
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+}
+  
+.close-button:hover, .close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+  
+  

@@ -1,5 +1,6 @@
 import { fireMissle } from "./fireMissle.js"
 import { generateRandomShip } from "./randomShip.js"
+import "./modal.js"
 
 /**
  * Creates a DOM gameboard
@@ -40,7 +41,6 @@ export function initGameBoard(gameboard) {
  * @param {*} DOMGameboard 
  * @param {*} gameboard 
  */
-
 let counter = 0;
 
 const setupEventListener = (DOMGameboard, gameboard) => {
@@ -48,18 +48,17 @@ const setupEventListener = (DOMGameboard, gameboard) => {
         row.forEach((cell, cellIndex) => {
             cell.addEventListener("click", () => {
                 const isHit = fireMissle(gameboard, rowIndex, cellIndex)
-                console.log(gameboard)
                 // Boat has been hit, change the UI
                 if (!isHit) {
                     cell.innerHTML = '🌊'
                 }
                 
-                // TODO: create modal to show the winner
                 if (isHit) {
                     cell.innerHTML = '💥';
                     counter++;  
                     if (counter === 9) {
-                        alert('you won');
+                        // alert('you won')
+                        openModal();
                     }
                                       
                 }

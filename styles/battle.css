@@ -48,13 +48,6 @@ td {
 }
 
 /* Modal */
-.button {
-    background: coral;
-    padding: 1em 2em;
-    color: white;
-    border: 0;
-  }
-  
 .button:hover {
     background: #333;
   }
@@ -68,26 +61,31 @@ td {
     height: 100%;
     width: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.9);
 }
   
 .modal-content {
-    background-color: grey;
-    margin: 20% auto;
     padding: 20px;
-    width: 70%;
+}
+
+.modal-img {
+    width: 35%;
 }
   
 .close-button {
-    color: #ccc;
+    color:rgba(254, 249, 254, 0.80);
     float: right;
     font-size: 30px;
 }
   
 .close-button:hover, .close-button:focus {
-    color: black;
+    color: rgba(4, 86, 3, 1);
     text-decoration: none;
     cursor: pointer;
 }
   
+.restart-content {
+    background-color:#212529; 
+    padding: 1rem 0;
+}
   

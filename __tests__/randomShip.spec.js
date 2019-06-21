@@ -1,4 +1,4 @@
-import { generateRandomShip } from '../scripts/randomShip'
+import { generateRandomShip } from '../scripts/generateRandomShip'
 
 describe('generateRandomShip', () => {
     let board;

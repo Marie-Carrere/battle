@@ -13,6 +13,9 @@ dist
 # DS_Store file
 .DS_Store
 
+# VS code file 
+.vscode/
+
 # Coverage
 coverage
 

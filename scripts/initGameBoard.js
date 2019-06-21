@@ -9,32 +9,7 @@ import { openModal } from "./modal.js"
  * @param {*} DOMGameboard 
  * @param {*} gameboard 
  */
-let counter = 0;
 
-const setupEventListener = (DOMGameboard, gameboard) => {
-    DOMGameboard.forEach((row, rowIndex) => {
-        row.forEach((cell, cellIndex) => {
-            cell.addEventListener("click", () => {
-                const isHit = fireMissle(gameboard, rowIndex, cellIndex)
-                // Boat has been hit, change the UI
-                if (!isHit) {
-                    cell.innerHTML = '🌊';
-                }
-                console.log(counter)
-                if (isHit) {
-                    cell.innerHTML = '💥';
-                    counter++;  
-                    if (counter === 9) {
-                        openModal();
-                        
-                    }              
-                }
-
-                
-            })
-        })
-    });
-}
 
 /**
  * Creates a DOM gameboard
@@ -42,6 +17,7 @@ const setupEventListener = (DOMGameboard, gameboard) => {
  */
 
 export function initGameBoard() {
+    let counter = 0;
     let gameboard = createGameBoard(5, 5);
     let DOMGameboard = [];
     let table = document.getElementById('gameboard');
@@ -67,6 +43,28 @@ export function initGameBoard() {
 
     // Initialize our enemies
     gameboard = generateRandomShip(gameboard, Math.random);
+
+    const setupEventListener = (DOMGameboard, gameboard) => {
+        DOMGameboard.forEach((row, rowIndex) => {
+            row.forEach((cell, cellIndex) => {
+                cell.addEventListener("click", () => {
+                    const isHit = fireMissle(gameboard, rowIndex, cellIndex)
+                    // Boat has been hit, change the UI
+                    if (!isHit) {
+                        cell.innerHTML = '🌊';
+                    }
+                    console.log(counter)
+                    if (isHit) {
+                        cell.innerHTML = '💥';
+                        counter++;  
+                        if (counter === 9) {
+                            openModal();
+                        }              
+                    }                    
+                })
+            })
+        });
+    }
 
     setupEventListener(DOMGameboard, gameboard);
 }

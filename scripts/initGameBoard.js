@@ -1,4 +1,5 @@
 import { fireMissle } from "./fireMissle.js"
+import { createGameBoard } from "./createGameBoard.js"
 import { generateRandomShip } from "./generateRandomShip.js"
 import { openModal } from "./modal.js"
 
@@ -17,15 +18,15 @@ const setupEventListener = (DOMGameboard, gameboard) => {
                 const isHit = fireMissle(gameboard, rowIndex, cellIndex)
                 // Boat has been hit, change the UI
                 if (!isHit) {
-                    cell.innerHTML = '🌊'
+                    cell.innerHTML = '🌊';
                 }
-                
+                console.log(counter)
                 if (isHit) {
                     cell.innerHTML = '💥';
                     counter++;  
                     if (counter === 9) {
-                        //  TODO: async await openModal
                         openModal();
+                        
                     }              
                 }
 
@@ -38,37 +39,36 @@ const setupEventListener = (DOMGameboard, gameboard) => {
 /**
  * Creates a DOM gameboard
  * Each row is a tr and each cell a td
- * @param {*} gameboard - the initial empty table
  */
 
-export function initGameBoard(gameboard) {
-    let DOMGameboard = []
+export function initGameBoard() {
+    let gameboard = createGameBoard(5, 5);
+    let DOMGameboard = [];
     let table = document.getElementById('gameboard');
-  
-    console.log(gameboard)
 
     for (let indexR = 0; indexR < gameboard.length; indexR++) {
-        let cellArray = []
+        let cellArray = [];
         let row = gameboard[indexR];
         row = document.createElement('tr');
         row.setAttribute('id', indexR);
+        console.log(table);
         table.appendChild(row);
 
         for (let indexC = 0; indexC < gameboard[indexR].length; indexC++) {
             let col = document.createElement('td');
             col.setAttribute('class', indexC);
             row.appendChild(col);
-            cellArray.push(col)
+            cellArray.push(col);
         }
 
         DOMGameboard.push(cellArray)
-        cellArray = []
+        cellArray = [];
     }
 
     // Initialize our enemies
-    gameboard = generateRandomShip(gameboard, Math.random)
+    gameboard = generateRandomShip(gameboard, Math.random);
 
-    setupEventListener(DOMGameboard, gameboard)
+    setupEventListener(DOMGameboard, gameboard);
 }
 
 

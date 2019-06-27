@@ -10,20 +10,7 @@ export function createGameBoard(rows, cols) {
         throw new Error ('error message');
     }
   
-    // Creates all lines:
-    for(let i = 0; i < rows; i++) {
-  
-        // Creates an empty row
-        arr.push([]);
-  
-        // Adds cols to the empty line:
-        arr[i].push(new Array(cols));
-  
-        // Fill in the array
-        for(let j = 0; j < cols; j++) {
-            arr[i][j] = 0;
-        }
-    }
-    return arr;
+      // Creates all lines:
+  	return new Array(rows).fill(cols).map(() => new Array(cols).fill(0));
   }
 

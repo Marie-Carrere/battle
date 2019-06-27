@@ -9,17 +9,31 @@ import { openModal } from "./modal.js"
  * @param {*} DOMGameboard 
  * @param {*} gameboard 
  */
-
-
-/**
- * Creates a DOM gameboard
- * Each row is a tr and each cell a td
- */
-
-export function initGameBoard() {
+const setupEventListener = (DOMGameboard, gameboard) => {
     let counter = 0;
-    let gameboard = createGameBoard(5, 5);
-    let DOMGameboard = [];
+
+    DOMGameboard.forEach((row, rowIndex) => {
+        row.forEach((cell, cellIndex) => {
+            cell.addEventListener("click", () => {
+                const isHit = fireMissle(gameboard, rowIndex, cellIndex)
+                // Boat has been hit, change the UI
+                if (!isHit) {
+                    cell.innerHTML = '🌊';
+                }
+
+                if (isHit) {
+                    cell.innerHTML = '💥';
+                    counter++;  
+                    if (counter === 9) {
+                        openModal();
+                    }              
+                }                    
+            })
+        })
+    });
+}
+
+const generateTable = (DOMGameboard, gameboard) => {
     let table = document.getElementById('gameboard');
 
     for (let indexR = 0; indexR < gameboard.length; indexR++) {
@@ -27,7 +41,6 @@ export function initGameBoard() {
         let row = gameboard[indexR];
         row = document.createElement('tr');
         row.setAttribute('id', indexR);
-        console.log(table);
         table.appendChild(row);
 
         for (let indexC = 0; indexC < gameboard[indexR].length; indexC++) {
@@ -40,32 +53,25 @@ export function initGameBoard() {
         DOMGameboard.push(cellArray)
         cellArray = [];
     }
+}
 
+
+/**
+ * Creates a DOM gameboard
+ * Each row is a tr and each cell a td
+ */
+
+export function initGameBoard() {
+    const gameboard = createGameBoard(5, 5);
+    const DOMGameboard = [];
+
+    // Initialize html table
+    generateTable(DOMGameboard, gameboard);
+    
     // Initialize our enemies
-    gameboard = generateRandomShip(gameboard, Math.random);
+    generateRandomShip(gameboard, Math.random);
 
-    const setupEventListener = (DOMGameboard, gameboard) => {
-        DOMGameboard.forEach((row, rowIndex) => {
-            row.forEach((cell, cellIndex) => {
-                cell.addEventListener("click", () => {
-                    const isHit = fireMissle(gameboard, rowIndex, cellIndex)
-                    // Boat has been hit, change the UI
-                    if (!isHit) {
-                        cell.innerHTML = '🌊';
-                    }
-                    console.log(counter)
-                    if (isHit) {
-                        cell.innerHTML = '💥';
-                        counter++;  
-                        if (counter === 9) {
-                            openModal();
-                        }              
-                    }                    
-                })
-            })
-        });
-    }
-
+    // Set event listener on the board
     setupEventListener(DOMGameboard, gameboard);
 }
 
